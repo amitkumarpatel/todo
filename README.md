@@ -1,24 +1,16 @@
-# README
+A tiny RESTful Json API to parse the content found inside the tags h1, h2 and h3 and the links and store its content.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Implemented with jsonapi_resources gem (https://github.com/cerebris/jsonapi-resources)
 
-Things you may want to cover:
+The API must has three endpoints:
+first Endpoint receives the web url that is to be parsed. 
 
-* Ruby version
+curl -i -H "Accept: application/vnd.api+json" -H 'Content-Type:application/vnd.api+json' -X POST -d '{"data": {"type":"pages", "attributes":{"title":"Amit KUmar Patel", "weburl": "https://www.amitkumarpatel.co.in"}}}' http://lim-todo.herokuapp.com/pages 
 
-* System dependencies
+second Endpoint parse the url and stores the content of the tags
 
-* Configuration
+curl -i -H "Accept: application/vnd.api+json" "http://lim-todo.herokuapp.com/pages/page_id/read_page"
 
-* Database creation
+To view the json response 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+curl -i -H "Accept: application/vnd.api+json" "http://lim-todo.herokuapp.com/pages?include=elements"
