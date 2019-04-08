@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 	jsonapi_resources :pages do
 		get :read_page
 	end
+	root to: 'pages#index'
 end
