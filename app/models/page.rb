@@ -2,6 +2,9 @@ class Page < ApplicationRecord
   require 'open-uri'
   has_many :elements, dependent: :destroy
 
+  validates :weburl, presence: true
+  validates :weburl, uniqueness: true
+
   def read_html
     page = Nokogiri::HTML.parse(open(self.weburl))
 		["h1", "h2", "h3", "a"].each do |tag|
